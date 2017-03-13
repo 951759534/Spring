@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="MySqlDAL" class="org.dal.impl.MySqlDAL"></bean>  //id是文件名  class是文件包的地址
+    <bean id="SqlServerDAL" class="org.dal.impl.SQLServeDAL"></bean>
+</beans>
