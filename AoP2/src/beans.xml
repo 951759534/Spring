@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="beforeAdvice" class="org.aop.BeforeAdvisor" />
+    <bean id="target" class="org.aop.Service" />
+    <bean id="staticAdvisor" class="org.aop.MyAdvisor">
+        <property name="advice" ref="beforeAdvice"/>
+    </bean>
+    <bean id="service" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces">
+            <value>org.aop.Dao</value>
+        </property>
+        <property name="target" ref="target"></property>
+        <property name="interceptorNames">
+            <list>
+                <idref local="beforeAdvice" />
+            </list>
+        </property>
+        <property name="proxyTargetClass">
+            <value>false</value>
+        </property>
+    </bean>
+</beans>
